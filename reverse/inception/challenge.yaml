@@ -1,0 +1,16 @@
+name: inception
+author: itskarudo
+difficulty: hard
+
+description: |-
+  lol
+
+  this challenge is dedicated to @rx0f
+
+flag: ingehack{making_this_challenge_was_more_painful_than_solving_it_trust_me}
+
+provide:
+  - dist/main
+
+visible: true
+deployed: true

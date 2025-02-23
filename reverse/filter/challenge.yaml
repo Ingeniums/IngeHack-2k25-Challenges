@@ -1,0 +1,16 @@
+name: filter
+author: itskarudo
+difficulty: hard
+
+description: |-
+  is you magical
+
+  **NOTE**: this challenge needs to be run as sudo, not malware i promise kthxbye.
+
+flag: ingehack{is_this_a_hard_enough_challenge_to_be_in_the_hard_category??_not_sure}
+
+provide:
+  - dist/chal
+
+visible: true
+deployed: true

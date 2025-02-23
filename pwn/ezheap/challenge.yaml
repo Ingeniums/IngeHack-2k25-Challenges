@@ -1,0 +1,29 @@
+name: ezheap
+author: godsword
+difficulty: easy
+
+description: |-
+  you should just take your heap lessons seriously
+
+  `{{ nc }}`
+
+flag: ingehack{chunks_metadata_is_that_simple_huh}
+
+provide:
+  - ./challenge/out
+  - ./src/main.c
+
+containers: 
+  main: 
+    challenge: 
+      build: ./
+      privileged: true
+      ports: [1337] 
+ 
+expose: 
+  main: 
+  - target: 1337
+    tcp: ezheap.ctf.ingeniums.club
+
+visible: true
+deployed: true

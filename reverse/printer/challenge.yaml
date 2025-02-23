@@ -1,0 +1,15 @@
+name: printer
+author: itskarudo
+difficulty: medium
+
+description: |-
+  printing and printing and printing
+
+flag: ingehack{youre_not_smart_this_is_second_year_real_analysis_shit}
+
+provide:
+  - dist/main
+  - dist/enc
+
+visible: true
+deployed: true

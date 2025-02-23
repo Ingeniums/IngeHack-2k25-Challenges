@@ -1,0 +1,23 @@
+name: trace
+author: 0xRosie
+difficulty: medium
+
+description: |
+  I was working in peace to see suddenly a picture that im quite sure i never download :/?   
+  I know it's called work.jpg but im not able to open it, and that's so sus,   
+  i guess someone messed with my pc while i'm away, and i wonder who they work for!   
+  Here are some traces from my pc, can you inspect it and tell me   
+  1- the original name of "work.jpg" file   
+  2- domain name of the attacker   
+
+  **NOTE**: this is the flag format `ingehack{originalfilename.extention_the.attacker's.domain.name}` all characters must be lowercase
+
+flag: ingehack{maliciousempire1004.exe_security.criminalip.com}
+
+
+provide:
+  - challenge/trace.zip
+
+
+
+visible: true

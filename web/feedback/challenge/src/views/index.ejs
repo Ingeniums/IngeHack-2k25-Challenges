@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback Form</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    #input, #name { width: calc(100% - 50px); padding: 8px; margin-bottom: 10px; }
+    #submit { padding: 10px 20px; cursor: pointer; }
+    h1 { font-size: 24px; }
+    .success-message { color: green; margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Feedback Form</h1>
+  <p>We are providing you this feedback form so we can view it later.</p>
+
+  <% if (success) { %>
+    <p class="success-message">Thank you! Your feedback has been submitted successfully.</p>
+  <% } %>
+
+  <form id="feedbackForm">
+    <input type="text" id="name" name="name" placeholder="Enter your name..." required />
+    <textarea id="input" name="message" placeholder="Enter your message here..." required></textarea>
+    <button id="submit" type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('feedbackForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+      
+      const name = document.getElementById('name').value;
+      const message = document.getElementById('input').value;
+      const feedbackString = `echo "${name}" said "${message}"`;
+      
+      const formData = new FormData(this);
+      const params = new URLSearchParams(formData).toString();
+      
+      const response = await fetch("/submit", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'X-Log': feedbackString
+        },
+        body: params
+      });
+      
+      if (response.ok) {
+        alert('Thank you! Your feedback has been submitted successfully.');
+        this.reset();
+      } else {
+        alert('Something went wrong. Please try again.');
+      }
+    });
+  </script>
+</body>
+</html>

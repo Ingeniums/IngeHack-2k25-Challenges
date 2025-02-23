@@ -1,0 +1,32 @@
+name: acrobatics
+author: godsword
+difficulty: easy
+
+description: |
+  this is not the challenge the world needs,   
+  this is not the challenge the world asked for,   
+  this is the challenge the world gets.
+
+  `{{ nc }}`
+
+flag: ingehack{hope_ai_helped_with_this_shi}
+
+
+provide:
+  - challenge/main.py
+
+
+containers:
+  main:
+    challenge:
+      build: ./
+      ports: [1337]
+
+expose:
+  main:
+  - target: 1337
+    tcp: acrobatics.ctf.ingeniums.club
+
+
+visible: true
+deployed: true 

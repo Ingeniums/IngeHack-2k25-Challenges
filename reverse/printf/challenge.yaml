@@ -1,0 +1,15 @@
+name: printf
+author: itskarudo
+difficulty: medium
+
+description: |-
+  reverse challenge with source! should be easy right?
+
+flag: ingehack{pR1ntF_0r13nT3D_pR0gR4mm1n6!}
+
+provide:
+  - dist/chal
+  - dist/chal.c
+
+visible: true
+deployed: true

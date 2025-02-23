@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2rem;
+        }
+
+        p {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+
+        li:nth-child(even) {
+            background-color: #e0e0e0;
+        }
+
+        li .private {
+            color: #777;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .add-quote,
+        .logout {
+            display: inline-block;
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-decoration: none;
+        }
+
+        .add-quote:hover,
+        .logout:hover {
+            background-color: #218838;
+        }
+        
+        .logout {
+            background-color: #dc3545; /* Red color for logout */
+        }
+
+        .logout:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Quotes</h1>
+        {% if user.is_authenticated %}
+            <p>Welcome, {{ user.username }}!</p>
+            <a href="{% url 'add_quote' %}" class="add-quote">Add a New Quote</a>
+            <form action="{% url 'logout' %}" method="post" style="text-align: center;">
+                {% csrf_token %}
+                <button type="submit" class="logout">Logout</button>
+            </form>
+        {% else %}
+            <p><a href="{% url 'login' %}">Login</a> to add a quote.</p>
+        {% endif %}
+
+        <ul>
+            {% for quote in quotes %}
+                <li>
+                    "{{ quote.text }}" - <strong>{{ quote.author }}</strong> 
+                    {% if quote.private %} <span class="private">(Private)</span> {% endif %}
+                </li>
+            {% empty %}
+                <li>No quotes available.</li>
+            {% endfor %}
+            <a href="{% url 'quote_list' %}?author__username={{ user.username }}" class="filter-quotes">
+                Want to see only yours?
+            </a>
+            
+        </ul>
+    </div>
+</body>
+</html>

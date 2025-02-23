@@ -1,0 +1,17 @@
+docker:
+  image:
+    prefix: ingehackv4.azurecr.io/challs
+
+flagFormat: ingehack\{[^}]+\}
+
+backends:
+  - resolve: rctf
+    options:
+      scoring:
+        minPoints: 100
+        maxPoints: 500
+      url: https://ctf.ingeniums.club
+      token: ADMIN_ACCESS_TOKEN
+  - resolve: k8s
+    options:
+      domain: ctf.ingeniums.club

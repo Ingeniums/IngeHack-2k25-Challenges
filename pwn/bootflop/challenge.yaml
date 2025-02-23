@@ -1,0 +1,30 @@
+name: bootflop
+author: itskarudo
+difficulty: hard
+
+description: |-
+  i love esolangs, i love bootloaders.
+
+  `{{ nc }}`
+
+flag: ingehack{debugging_real_mode_apps_sucks_man}
+
+provide:
+  - dist/bootflop.img
+  - dist/run.sh
+
+containers: 
+  main: 
+    challenge: 
+      build: ./challenge
+      ports: [5000] 
+      privileged: true
+      readOnlyRootFilesystem: false
+ 
+expose: 
+  main: 
+  - target: 5000
+    tcp: bootflop.ctf.ingeniums.club
+
+visible: true
+deployed: true

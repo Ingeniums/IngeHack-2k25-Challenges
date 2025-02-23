@@ -1,0 +1,36 @@
+name: Log2 Outro
+author: 0xRosie
+
+difficulty: medium
+
+description: |-
+  Now that you discovered your DF problem and identified all this informations, it's IR solutions time!
+
+  To construct the flag you have to:
+
+  1- write a command/rule to block the malicious ip in silence :
+  SuitableCommand_parametrs_IP_parameters
+
+  You might noticed that some security measures were disabled while other were in a less secure mode
+
+  2- identify them and write the suitable full command to reactivate/enforce them
+
+  Flag format : all lower case, no spaces, just underscores, and points if needed
+
+  If there is a command like this for exemple :
+
+  "Cat -O ingehack.txt"
+  It shall be written as :
+  `cat_o_ingehack.txt`
+
+  (there is a dot between each 2 full commands)
+
+  `ingehack{full_command1.full_command2.full_command3}`
+
+  **NOTE**: Use same Zip file as the Log2 Intro Challenge
+
+flag: ingehack{iptables_a_input_s_51.222.136.32_j_drop.systemctl_enable_auditd.setenforce_1}
+
+
+
+visible: true 

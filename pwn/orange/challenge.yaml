@@ -1,0 +1,30 @@
+name: 🍊
+author: godsword
+difficulty: medium
+
+description: |-
+  watermelon
+
+  `{{ nc }}`
+
+flag: ingehack{no_free????_make_your_own_free}
+
+provide:
+  - ./challenge/out_patched
+  - ./challenge/libc.so.6
+  - ./challenge/ld.so.2
+
+containers: 
+  main: 
+    challenge: 
+      build: ./
+      privileged: true
+      ports: [1337] 
+ 
+expose: 
+  main: 
+  - target: 1337
+    tcp: orange.ctf.ingeniums.club
+
+visible: true
+deployed: true

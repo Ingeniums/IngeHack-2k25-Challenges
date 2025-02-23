@@ -1,0 +1,8 @@
+services:
+  budapest:
+    build: .
+    ports:
+      - "30001:8080"
+    restart: on-failure
+    env_file:
+      - .env

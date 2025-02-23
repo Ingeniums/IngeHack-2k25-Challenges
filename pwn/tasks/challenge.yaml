@@ -1,0 +1,33 @@
+name: tasks++
+author: itskarudo
+difficulty: hard
+
+description: |-
+  just another tasks manager
+
+  `{{ nc }}`
+
+flag: ingehack{pwn_isnt_just_c_remember_that}
+
+provide:
+  - ./dist/main
+  - ./dist/main.cpp
+  - ./dist/Task.h
+  - ./dist/TaskList.h
+  - ./dist/libc.so.6
+  - ./dist/ld-linux-x86-64.so.2
+
+containers: 
+  main: 
+    challenge: 
+      build: ./challenge
+      privileged: true
+      ports: [5000] 
+ 
+expose: 
+  main: 
+  - target: 5000
+    tcp: tasks.ctf.ingeniums.club
+
+visible: true
+deployed: true

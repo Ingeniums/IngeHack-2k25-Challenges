@@ -1,0 +1,13 @@
+name: The Phantom Wallet
+author: Mr Robot
+difficulty: easy
+
+description: |
+  In the shadows of the digital world, a single email changed everything , A mysterious email from x000D , attack—your files encrypted, You deleted the note phrase, and now the clock is ticking. Identify the malware family, trace the Bitcoin transaction hash, and recover the wallet uncover the attacker’s wallet, and reclaim what’s yours before it’s too late. Can you outsmart the Phantom Wallet?
+
+  Flag: `ingehack{MalwareFamily_TransactionHash}`
+
+flag: ingehack{Locky_9e5414ca921b1effe16691c070ecd0fde204c35a3b666e6992f38cd476ec43d8}
+
+deployed: true 
+visible: true 

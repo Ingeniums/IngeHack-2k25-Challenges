@@ -1,0 +1,29 @@
+name: Log2.0
+author: 0xRosie
+
+difficulty: easy
+
+description: |-
+  You can't secure what you don't know! Before diving into malicious details, you gotta know first your system, and it's up to you to choose how. 
+
+  To construct the flag you have to:
+  1. get the OS type with its full version
+  2. the year of the old software 
+  3. systeme remaining size (in kbs, only numbers)
+  4. recieved packet's protocol
+
+
+  Flag format : all lower case, no spaces, just underscores, and points for the versions 
+  
+  `ingehack{os.full.version_Year_size_protocol}`
+
+  **NOTE**: Use same Zip file as the Log2 Intro Challenge
+
+flag: ingehack{linux2.6.5-1.358_2000_125312_SNMP}
+
+
+
+
+
+
+visible: true 

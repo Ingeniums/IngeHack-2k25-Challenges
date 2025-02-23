@@ -1,0 +1,19 @@
+name: MHL
+author: scalio
+
+difficulty: hard
+
+description: |-
+    ecdsa is secure if u tweak it  
+
+
+flag: ingehack{msb_hnp_LLL_flag_easy}
+
+
+provide:
+  - ./dist/src.py
+  - ./dist/out.txt
+
+
+
+visible: true 

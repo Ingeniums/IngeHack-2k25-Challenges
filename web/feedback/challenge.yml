@@ -1,0 +1,23 @@
+name: feedback
+author: poysa
+difficulty: easy
+
+description: |-
+  We have a feedback system in place, but we are not sure if it's working correctly. Can you help us?
+    
+  [{{url}}]({{url}})
+
+flag: ingehack{m4n1pul4t3d_l0gs_c4n_r3v34l_s3cr3ts}
+
+containers:
+  main:
+    challenge:
+      build: ./challenge
+      ports: [3000]
+expose:
+  main:
+    - target: 3000
+      http: feedback.ctf.ingeniums.club
+
+visible: true
+deployed: true

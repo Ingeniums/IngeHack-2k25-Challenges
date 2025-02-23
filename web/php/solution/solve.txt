@@ -1,0 +1,2 @@
+there is action id(next js server action). and by looking at the chunks of next js you can figure out that there is another id other than the one we are calling.
+use it to get the flag salam alikom

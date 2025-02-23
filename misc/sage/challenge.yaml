@@ -1,0 +1,30 @@
+
+name: sage
+author: scalio
+difficulty: hard
+
+description: |
+  sage jail ??? never seen one 
+
+  `{{ nc }}`
+
+flag: ingehack{MULtIvaR1aTE_P0lyn0MI4L???_evAl??_tH0ught_$4GE_1$_$AF3}
+
+deployed: true 
+visible: true 
+provide:
+  - dist/server.py
+
+
+containers:
+  main:
+    challenge:
+      build: ./
+      ports: [2020]
+      readOnlyRootFilesystem: false
+      tmpfsMounts: ['tmp']
+
+expose:
+  main:
+  - target: 2020
+    tcp: sage.ctf.ingeniums.club

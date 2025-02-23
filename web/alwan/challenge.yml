@@ -1,0 +1,26 @@
+name: alwan
+author: poysa
+difficulty: medium
+
+description: |-
+  A simple message colorizer... or is it?  
+  Can you find a way to make it reveal its secrets? 
+
+  [{{url}}]({{url}})
+
+flag: ingehack{GoTplS_Dr34m}  
+
+
+containers: 
+  main: 
+    challenge: 
+      build: ./challenge
+      ports: [8080] 
+ 
+expose: 
+  main: 
+  - target: 8080
+    http: alwan.ctf.ingeniums.club
+
+visible: true
+deployed: true

@@ -1,0 +1,31 @@
+
+name: 1xbet
+author: scalio
+difficulty: medium
+
+description: |
+  There are no losers , only quitters
+
+  `{{ nc }}`
+
+flag: ingehack{PYThON_rANdOm_1SNt_tH4T_$3cuRE_AFTER_4lL_$h0uT0uT_t0_MeRs3nn3}
+
+
+provide:
+  - dist/casino.py
+
+
+containers:
+  main:
+    challenge:
+      build: ./
+      ports: [1030]
+
+expose:
+  main:
+  - target: 1030
+    tcp: 1xbet.ctf.ingeniums.club
+
+
+deployed: true 
+visible: true

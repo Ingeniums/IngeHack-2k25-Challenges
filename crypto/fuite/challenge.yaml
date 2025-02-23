@@ -1,0 +1,33 @@
+name: la fuite
+author: scalio
+
+difficulty: medium
+
+description: |-
+  My server is leaking , but u still cant do shit can u ?
+
+  
+  `{{ nc }}`
+
+
+flag: ingehack{lE4ky_SeRV3r_ANd_COpPeR$m1Th?????D03$nT_Se3m_lIkE_a_BAD_iDe4}
+
+
+provide:
+  - ./dist/leaky.py
+
+containers:
+  main:
+    challenge:
+      build: ./
+      ports: [1024]
+
+
+expose:
+  main:
+  - target: 1024
+    tcp: fuite.ctf.ingeniums.club
+
+
+deployed: true 
+visible: true 

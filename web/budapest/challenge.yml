@@ -1,0 +1,20 @@
+name: budapest 
+author: poysa
+difficulty: medium
+
+description: |-
+  hungry? me too. 
+
+  **NOTE**: this is not a reverse challenge.
+  Please solve the challenge localy before trying in the remote.
+
+  [https://budapest.web.ingeniums.club/register](https://budapest.web.ingeniums.club/register)
+
+flag: ingehack{PuD4P3ST_hUn64ry@_hUn9Ry_$aNDwiCh}
+
+provide:
+  - redacted/Dockerfile
+  - redacted/build/main
+
+visible: true
+deployed: true

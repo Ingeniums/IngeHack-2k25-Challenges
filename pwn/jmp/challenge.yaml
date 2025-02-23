@@ -1,0 +1,31 @@
+name: jmp
+author: godsword
+difficulty: medium
+
+description: |-
+  jmp jmp jmp
+
+  `{{ nc }}`
+
+flag: ingehack{the_junkiest_solve_script_award_goes_to}
+
+provide:
+  - challenge/out_patched
+  - challenge/libc.so.6
+  - challenge/ld.so.2
+  - challenge/libcapstone.so.5
+
+containers: 
+  main: 
+    challenge: 
+      build: ./
+      privileged: true
+      ports: [1337] 
+ 
+expose: 
+  main: 
+  - target: 1337
+    tcp: jmp.ctf.ingeniums.club
+
+visible: true
+deployed: true

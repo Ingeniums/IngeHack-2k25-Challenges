@@ -1,0 +1,27 @@
+name: mjsc
+author: itskarudo
+difficulty: medium
+
+description: |-
+  JavaScript™️
+
+  [{{ url }}]({{ url }})
+
+flag: ingehack{i_hate_js_rev_chals_they_never_have_a_new_idea}
+
+provide: []
+
+containers: 
+  main: 
+    challenge: 
+      build: ./challenge
+      ports: [80] 
+      readOnlyRootFilesystem: false
+ 
+expose: 
+  main: 
+  - target: 80
+    http: mjsc.ctf.ingeniums.club
+
+visible: true
+deployed: true

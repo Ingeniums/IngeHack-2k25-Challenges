@@ -1,0 +1,14 @@
+name: dados
+author: godsword
+difficulty: easy
+
+description: |-
+  infinite luck in exchange for a flag
+
+flag: ingehack{security_by_obscurity}
+
+provide:
+  - challenge/dados.apk
+
+visible: true
+deployed: true

@@ -1,0 +1,7 @@
+services:
+  url: 
+    build:
+      context: challenge
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"

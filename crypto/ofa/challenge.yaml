@@ -1,0 +1,33 @@
+name: One For All
+author: scalio
+
+difficulty: easy
+
+description: |-
+  All you need is time 
+
+  
+  `{{ nc }}`
+
+
+flag: ingehack{hadi_lbiday4_w_MZ4L_mZAl}
+
+
+provide:
+  - ./dist/main.py
+
+containers:
+  main:
+    challenge:
+      build: ./
+      ports: [2000]
+
+
+expose:
+  main:
+  - target: 2000
+    tcp: ofa.ctf.ingeniums.club
+
+
+deployed: true 
+visible: true 

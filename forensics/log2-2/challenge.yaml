@@ -1,0 +1,28 @@
+name: Log2.2
+author: 0xRosie
+
+difficulty: medium
+
+description: |-
+  Things are getting serious, looks like there are many attackers,   
+  but we shoud definitely report the main one,   
+  cuz that dude installed him self apparently.. ( and he tried to hide in addition!)
+
+  To construct the flag you have to get:
+  1- the name of the malware type
+  2- connection port
+  3-command used to hide the attack
+  4-the attacker's province 
+
+  Flag format : all lower case, no spaces, just underscores, and points if needed:
+
+  `ingehack{malwaretype_port_command_province}`
+
+flag: ingehack{cronrat_4444_logrotate_quebec}
+
+
+
+
+
+
+visible: true

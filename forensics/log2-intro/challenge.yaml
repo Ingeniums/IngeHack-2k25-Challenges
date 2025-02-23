@@ -1,0 +1,17 @@
+name: Log2 Intro
+author: 0xRosie
+
+difficulty: warmup
+
+description: |-
+  You were called to inspect an old computer's activity, but unfortunately the computer is too slow that you can't even install any tool or, barely dive into the folders, all what you have is a log file that you can inspect in your own device, this is your chance to build your own scripts, find your own optimized way to uncover the covered.. enjoy!
+
+  Flag Format : `ingehack{zip.md5.hash}`
+
+flag: ingehack{788ba02a8567cf2a2bfbf518603968ba}
+
+provide:
+  - ./L02.log.zip
+
+
+visible: true 

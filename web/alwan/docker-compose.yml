@@ -1,0 +1,8 @@
+services:
+  colorize:
+    build:
+      context: ./challenge
+      dockerfile: Dockerfile
+    restart: on-failure
+    ports:
+      - '30002:8080'

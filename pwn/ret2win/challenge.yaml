@@ -1,0 +1,29 @@
+name: ret2win
+author: godsword
+difficulty: warmup
+
+description: |-
+  they say every ctf should have one of these
+
+  `{{ nc }}`
+
+flag: ingehack{it_all_started_like_this}
+
+provide:
+  - ./challenge/out
+  - ./src/main.c
+
+containers: 
+  main: 
+    challenge: 
+      build: ./
+      privileged: true
+      ports: [1337] 
+ 
+expose: 
+  main: 
+  - target: 1337
+    tcp: ret2win.ctf.ingeniums.club
+
+visible: true
+deployed: true

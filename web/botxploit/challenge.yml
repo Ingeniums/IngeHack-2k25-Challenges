@@ -1,0 +1,27 @@
+name: BotXploit
+author: poysa
+difficulty: medium
+
+description: |-
+  Breaking news! Something doesn’t add up. Can you find it?
+
+  [{{url}}]({{url}})
+
+flag: ingehack{1s_Th1s_R3fl3ct3d_XSS_0r_St0r3d?_0h_W41t_C4ch3_p01s0n3d_It!}
+
+containers: 
+  main: 
+    challenge: 
+      build: ./challenge
+      ports: [5000] 
+      readOnlyRootFilesystem: false
+      tmpfsMounts: ['tmp']
+ 
+expose: 
+  main: 
+  - target: 5000
+    http: botxploit.ctf.ingeniums.club
+    
+
+visible: true
+deployed: true

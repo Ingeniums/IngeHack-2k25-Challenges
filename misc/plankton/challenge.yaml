@@ -1,0 +1,31 @@
+name: plankton
+author: phues
+difficulty: medium
+
+description: |-
+  My friend trained his very cool model, however he's not satisfied, Can you give him a better model in exchange for a flag?  
+
+  Just a little warning: he's very PICKY!  
+
+  [{{url}}]({{url}})
+
+flag: ingehack{N3vER_TruST_piCkLeD_41_M0D3Ls}
+
+provide:
+  - ./dist.zip
+
+containers:
+  main:
+    challenge:
+      build: .
+      privileged: true
+      ports:
+        - 8080
+
+expose: 
+  main:
+    - target: 8080
+      http: plankton.ctf.ingeniums.club
+
+visible: true
+deployed: true

@@ -1,0 +1,28 @@
+name: hashes
+author: itskarudo
+difficulty: hard
+
+description: |-
+  this is a description!!
+
+  `{{ nc }}`
+
+flag: ingehack{kinda_stolen_from_34c3_firmware_update}
+
+provide:
+  - dist/chal.py
+
+containers: 
+  main: 
+    challenge: 
+      build: ./challenge
+      privileged: true
+      ports: [5000] 
+ 
+expose: 
+  main: 
+  - target: 5000
+    tcp: hashes.ctf.ingeniums.club
+
+visible: true
+deployed: true

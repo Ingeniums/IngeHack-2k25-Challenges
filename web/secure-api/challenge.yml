@@ -1,0 +1,30 @@
+name: secure-api
+author: poysa
+difficulty: hard
+
+description: |-
+  Meta hired us to pentest their new API. Something feels... different. Can you figure it out?
+    
+  [{{url}}/vulns?keyword=2020]({{url}}/vulns?keyword=2020)
+
+flag: ingehack{YOur_da7A_bEL0n95_tO_m3TA}
+
+containers:
+  main:
+    challenge:
+      build: ./challenge
+      ports: [3000]
+      readOnlyRootFilesystem: false
+  mongodb:
+    challenge:
+      image: mongo:latest
+      ports: [27017]
+      readOnlyRootFilesystem: false
+
+expose:
+  main:
+    - target: 3000
+      http: secure-api.ctf.ingeniums.club
+
+visible: true
+deployed: true

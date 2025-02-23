@@ -1,0 +1,14 @@
+name: The Hollow Trace
+author: Mr Robot
+difficulty: hard
+
+description: |
+  A storm is brewing in the digital abyss, a crime meticulously crafted by a phantom whose name is spoken only in fear. His network is vast, his presence a whisper, his moves precise. We’ve caught one of his own, yet all we have is a false name: ethoosam, a blurred photo, and a cryptic obsession with ghosts and images. He speaks in riddles, his mind wired to the rhythm of numbers, weaving undirected yet intricate patterns. Arithmetic is his language, and sometimes, his alias bends into complex equations, a key hidden in the chaos. The mastermind is out there, leaving only fragmented traces for those who know where to look. The plan is unfolding, time is slipping, and the truth waits beneath layers of the unseen. Find him before his secret becomes a nightmare.
+
+flag: ingehack{0hhh_Y0u_F1nd_M333_!!!!_Y0u_4r3_0S1NT_3XP3RT_!NVE$T1G@T0R}
+
+provide:
+  - dist/W4n73d_M4n.zip
+
+deployed: true 
+visible: true 

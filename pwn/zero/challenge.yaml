@@ -1,0 +1,29 @@
+name: zero
+author: itskarudo
+difficulty: medium
+
+description: |-
+  translation services are so slow, i want a zero latency translator for all my important business, so i made one myself, right in the kernel.
+
+  `{{ nc }}`
+
+flag: ingehack{you_can_say_you_have_ZERO_LIMITS!!_badum_tss_🥁}
+
+provide:
+  - dist/run.sh
+  - dist/initramfs.cpio.gz
+  - dist/bzImage
+
+containers: 
+  main: 
+    challenge: 
+      build: ./chal
+      ports: [5000] 
+ 
+expose: 
+  main: 
+  - target: 5000
+    tcp: zero.ctf.ingeniums.club
+
+visible: true
+deployed: true

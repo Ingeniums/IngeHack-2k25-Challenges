@@ -1,0 +1,10 @@
+services:
+  web-nosql:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "30003:8000"  
+    restart: on-failure
+    environment:
+      - PYTHONUNBUFFERED=1  

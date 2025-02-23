@@ -1,0 +1,299 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: traefik-role
+
+rules:
+  - apiGroups:
+      - ""
+    resources:
+      - services
+      - secrets
+      - nodes
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - discovery.k8s.io
+    resources:
+      - endpointslices
+    verbs:
+      - list
+      - watch
+  - apiGroups:
+      - extensions
+      - networking.k8s.io
+    resources:
+      - ingresses
+      - ingressclasses
+    verbs:
+      - get
+      - list
+      - watch
+  - apiGroups:
+      - extensions
+      - networking.k8s.io
+    resources:
+      - ingresses/status
+    verbs:
+      - update
+  - apiGroups:
+      - traefik.io
+    resources:
+      - middlewares
+      - middlewaretcps
+      - ingressroutes
+      - traefikservices
+      - ingressroutetcps
+      - ingressrouteudps
+      - tlsoptions
+      - tlsstores
+      - serverstransports
+      - serverstransporttcps
+    verbs:
+      - get
+      - list
+      - watch
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: traefik-account
+  namespace: traefik
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: traefik-role-binding
+
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: traefik-role
+subjects:
+  - kind: ServiceAccount
+    name: traefik-account
+    namespace: traefik
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: traefik-deployment
+  namespace: traefik
+  labels:
+    app: traefik
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik
+  template:
+    metadata:
+      labels:
+        app: traefik
+    spec:
+      serviceAccountName: traefik-account
+      containers:
+        - name: traefik
+          image: traefik:v3.3
+          args:
+            - --accesslog
+            - --entrypoints.http.Address=:80
+            - --entrypoints.https.Address=:443
+            - --entrypoints.https.http.tls
+            - --entryPoints.chal.address=:1337
+            - --entrypoints.http.http.redirections.entrypoint.to=https
+            - --entrypoints.http.http.redirections.entrypoint.scheme=https
+            - --api.insecure
+            - --providers.kubernetescrd
+            - --providers.kubernetesingress=true
+          ports:
+            - name: http
+              containerPort: 80
+            - name: https
+              containerPort: 443
+            - name: dashboard
+              containerPort: 8080
+            - name: chal
+              containerPort: 1337
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik-web-secure-service
+  namespace: traefik
+
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: https
+      name: https
+      port: 443
+    - targetPort: http
+      name: http
+      port: 80
+    - targetPort: chal
+      name: chal
+      port: 1337
+    - targetPort: dashboard
+      name: dashboard
+      port: 8080
+  selector:
+    app: traefik
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloudflare-token-secret
+  namespace: cert-manager
+type: Opaque
+stringData:
+  api-token: CLOUDFLARE_TOKEN
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-production
+spec:
+  acme:
+    email: ISSUER_EMAIL
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef:
+      name: letsencrypt-production
+    solvers:
+    - dns01:
+        cnameStrategy: Follow
+        cloudflare:
+          email: CLOUDFLARE_EMAIL
+          apiTokenSecretRef:
+            name: cloudflare-token-secret
+            key: api-token
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: traefik-cert
+  namespace: traefik
+spec:
+  secretName: traefik-cert
+  issuerRef:
+    name: letsencrypt-production
+    kind: ClusterIssuer
+  commonName: "*.ctf.ingeniums.club"
+  dnsNames:
+    - "ctf.ingeniums.club"
+    - "*.ctf.ingeniums.club"
+---
+apiVersion: traefik.io/v1alpha1
+kind: TLSOption
+metadata:
+  name: default
+  namespace: traefik
+spec:
+  sniStrict: false
+---
+apiVersion: traefik.io/v1alpha1
+kind: TLSStore
+metadata:
+  name: default
+  namespace: traefik
+spec:
+  defaultCertificate:
+    secretName: traefik-cert
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: klodd
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: klodd
+  namespace: klodd
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: klodd
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: klodd # 
+subjects:
+  - kind: ServiceAccount
+    name: klodd
+    namespace: klodd
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: klodd
+  namespace: klodd
+type: Opaque
+data: # This is customizable. Base64 decode it or view the sample config.yaml below
+  config.yaml: Y2hhbGxlbmdlRG9tYWluOiBjdGYuaW5nZW5pdW1zLmNsdWIgIyB1c2UgbG9jYWxob3N0LmRpcmVjdCBmb3IgbG9jYWwgdGVzdGluZywgb3IgeW91ciBkb21haW4gZm9yIHByb2R1Y3Rpb24Ka3ViZUNvbmZpZzogY2x1c3RlcgpwdWJsaWNVcmw6IGh0dHBzOi8va2xvZGQuY3RmLmluZ2VuaXVtcy5jbHViICMgZXZlbnR1YWxseSBjaGFuZ2UgdGhpcyB0byB5b3VyIGRvbWFpbgpyY3RmVXJsOiBodHRwczovL2N0Zi5pbmdlbml1bXMuY2x1YiAjIFlvdXIgckNURiBVUkwgaGVyZS4KdHJhZWZpazogCiAgaHR0cEVudHJ5cG9pbnQ6IGh0dHBzCiAgdGNwRW50cnlwb2ludDogY2hhbAogIHRjcFBvcnQ6IDEzMzcKaW5ncmVzczogCiAgbmFtZXNwYWNlU2VsZWN0b3I6CiAgICBtYXRjaExhYmVsczoKICAgICAga3ViZXJuZXRlcy5pby9tZXRhZGF0YS5uYW1lOiB0cmFlZmlrICNlbnN1cmUgdGhpcyBtYXRjaGVzIHRoZSBuYW1lc3BhY2UgdHJhZWZpayBpcyBvbi4KICBwb2RTZWxlY3RvcjoKICAgIG1hdGNoTGFiZWxzOgogICAgICBhcHAua3ViZXJuZXRlcy5pby9uYW1lOiB0cmFlZmlrCnNlY3JldEtleTogU0VDUkVUX0tFWQpyZWNhcHRjaGE6ICMgVGhlc2UgYXJlIHRlc3Qga2V5cy4gUmVwbGFjZSB0aGVtIHdpdGggeW91ciBvd24ga2V5cyB3aGVuIG1vdmluZyB0byBwcm9kdWN0aW9uLgogIHNpdGVLZXk6IFJFQ0FQVENIQV9TSVRFX0tFWQogIHNlY3JldEtleTogUkVDQVBUQ0hBX1NFQ1JFVF9LRVkK
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: klodd
+  namespace: klodd
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: klodd
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: klodd
+    spec:
+      serviceAccountName: klodd # 
+      volumes:
+        - name: config
+          secret:
+            secretName: klodd
+      containers:
+        - name: klodd
+          image: ghcr.io/tjcsec/klodd:master # 
+          volumeMounts:
+            - name: config
+              mountPath: /app/config/
+              readOnly: true
+          ports:
+            - name: public
+              containerPort: 5000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: klodd
+  namespace: klodd
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: klodd
+  ports:
+    - name: public
+      port: 5000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: klodd
+  namespace: klodd
+spec:
+  rules:
+    - host: klodd.ctf.ingeniums.club #change this eventually to your public domain
+      http:
+        paths:
+          - backend:
+              service:
+                name: klodd
+                port:
+                  number: 5000
+            path: /
+            pathType: ImplementationSpecific

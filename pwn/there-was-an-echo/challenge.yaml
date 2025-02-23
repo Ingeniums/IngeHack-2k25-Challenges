@@ -1,0 +1,28 @@
+name: there was an echo
+author: godsword
+difficulty: medium
+
+description: |-
+  flag is at ./flag
+
+  `{{ nc }}`
+
+flag: ingehack{bro_printf_is_so_op_what_is_this}
+
+provide:
+  - ./challenge/out
+
+containers: 
+  main: 
+    challenge: 
+      build: ./
+      privileged: true
+      ports: [1337] 
+ 
+expose: 
+  main: 
+  - target: 1337
+    tcp: there-was-an-echo.ctf.ingeniums.club
+
+visible: true
+deployed: true

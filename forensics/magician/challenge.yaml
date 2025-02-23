@@ -1,0 +1,17 @@
+name: magician
+author: 0xRosie
+difficulty: warmup
+
+description: |
+  not in thousand year you can hear this ( but you can in 50 :p )   
+  **NOTE**: make sure you use the correct flag format `ingehack{}`
+
+flag: ingehack{M4gic_1$_3a$y}
+
+
+provide:
+  - challenge/WarmUp.zip
+
+
+
+visible: true

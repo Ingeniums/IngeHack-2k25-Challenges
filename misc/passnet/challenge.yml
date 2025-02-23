@@ -1,0 +1,18 @@
+name: PassNet
+author: phues
+difficulty: medium
+
+description: |
+  Why need encryption when you can just store your passwords inside an artificial brain, it's well known that you can't extract training data from a neural network, right?
+
+  [https://drive.google.com/drive/folders/1njzWLhOAzVa37aKuQ8M4tCM6m3pAwvcm?usp=drive_link](https://drive.google.com/drive/folders/1njzWLhOAzVa37aKuQ8M4tCM6m3pAwvcm?usp=drive_link)
+
+
+flag: ingehack{Nn_ar3_DUMb}
+
+
+provide:
+  - train.ipynb
+
+visible: true
+deploy: true

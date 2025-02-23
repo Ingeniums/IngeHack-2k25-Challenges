@@ -1,0 +1,16 @@
+name: faycel
+author: itskarudo
+difficulty: medium
+
+description: |-
+  Cheb Faycel Cipher™️
+
+flag: ingehack{hOP3Fully_YOU_figURED_oUt_1T_W4$_A_Fe1st3l_NeTwOrk_AND_NoT_som3_uN1ntenD3D_SoLut1On!!!}
+
+provide:
+  - dist/keysched.rs
+  - dist/main.rs
+  - dist/out.txt
+
+visible: true
+deployed: true

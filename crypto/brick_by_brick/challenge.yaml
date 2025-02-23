@@ -1,0 +1,15 @@
+name: brick by brick
+author: itskarudo
+difficulty: easy
+
+description: |-
+  I built this shit, BRICK BY BRICK
+
+flag: ingehack{$1De_cHanN3l??_iN_TH3_rSa_F4CToRY???_h0W_quE3R}
+
+provide:
+  - dist/challenge.py
+  - dist/output.txt
+
+visible: true
+deployed: true

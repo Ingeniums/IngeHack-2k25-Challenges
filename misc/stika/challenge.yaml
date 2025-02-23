@@ -1,0 +1,17 @@
+name: stika
+author: scalio , godsword
+
+difficulty: medium
+
+description: |-
+  I had a friend on Twitter called Stika, but after Elon took over, he mentioned somthing about migrating to a dark Twitter.   
+  
+  can you find him for me? He will thank you with something cool if you follow him.
+
+
+  **NOTE** : flag is all lower-case, guessy last minute uninspired challenge
+
+flag: ingehack{pro_guesser}
+
+
+visible: true 

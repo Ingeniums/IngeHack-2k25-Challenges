@@ -1,0 +1,11 @@
+services:
+  secure-api:
+    build:
+      context: ./challenge
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+
+  mongodb:
+    image: mongo:latest
+

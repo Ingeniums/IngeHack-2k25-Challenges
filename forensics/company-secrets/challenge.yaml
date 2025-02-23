@@ -1,0 +1,15 @@
+name: CompanySecrets
+author: Fa2yy
+
+difficulty: hard
+
+description: |-
+  Our dark web monitoring tool has detected company secrets being sold online. We've traced the source to a single compromised machine on our network. Use your digital forensics skills to assess the breach and determine what data was stolen.
+
+  **Password**: `ingehack`
+
+  [https://drive.google.com/drive/folders/1pTyMwrCFXyFpXwY8PmHF7f6F3-4eIlyY?usp=sharing](https://drive.google.com/drive/folders/1pTyMwrCFXyFpXwY8PmHF7f6F3-4eIlyY?usp=sharing)
+
+flag: ingehack{df1r_r3v_cryp0_m4gic_wh4t_c4nt_u_do}
+
+visible: true

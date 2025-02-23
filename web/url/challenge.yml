@@ -1,0 +1,29 @@
+name: url
+author: poysa
+difficulty: warmup
+
+description: |-
+  ez one, can you get it? 
+
+  [{{url}}]({{url}})
+
+flag: ingehack{why_read_env_when_you_can_read_memes}
+
+provide:
+  - togive/Dockerfile
+  - togive/main.go
+  - togive/.env
+
+containers: 
+  main: 
+    challenge: 
+      build: ./challenge
+      ports: [8080] 
+ 
+expose: 
+  main: 
+  - target: 8080
+    http: url.ctf.ingeniums.club
+
+visible: true
+deployed: true

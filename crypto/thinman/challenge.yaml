@@ -1,0 +1,32 @@
+name: Thin Man
+author: scalio
+
+difficulty: medium
+
+description: |-
+    Check out my Ecc multiplier 
+
+    Dont't forget the flag format
+    `{{nc}}` 
+
+
+flag: ingehack{somethin_long_here_hope_this_long_enough}
+
+
+provide:
+  - ./dist/server.py
+
+containers:
+  main:
+    challenge:
+      build: ./
+      ports: [1025]
+
+
+expose:
+  main:
+  - target: 1025
+    tcp: thin.ctf.ingeniums.club
+
+visible: true 
+deployed: true

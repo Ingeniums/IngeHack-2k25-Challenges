@@ -1,0 +1,4 @@
+flask 
+playwright 
+python-dotenv
+flask-limiter

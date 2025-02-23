@@ -1,0 +1,28 @@
+name: Log2.1
+author: 0xRosie
+
+difficulty: medium
+
+description: |-
+  Now, you must be familiar a bit with the file, and you might already start to notice the suspicious things happening, ik there are many but there is one critical attack is happening that unfortunately was successful at the end.
+
+  To construct the flag you have to:
+  1. the name of the first attack 
+  2. time of first successful attack try For exemple 20Feb19:20:21
+  3. the attacker's username
+  4. id of the first malicious process after the successful attack
+
+  Flag format : all lower case, no spaces, just underscores, and points if needed:
+
+  `ingehack{Attack.Name_dayMonHour:minutes:seconds_username_id}`
+
+  **NOTE**: Use same Zip file as the Log2 Intro Challenge
+
+flag: ingehack{ssh.bruteforce_07Oct14:31:12_an0nym0u5_13542}
+
+
+
+
+
+
+visible: true 

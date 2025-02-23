@@ -1,0 +1,13 @@
+name: nosql
+author: poysa
+difficulty: medium
+
+description: |-
+  there is sqli and noqli, but what the hell is this?
+
+  [https://nosql.web.ingeniums.club](https://nosql.web.ingeniums.club)
+
+flag: ingehack{us3_0rm_w1th_cauti0n_t0_avoid_injecti0ns}
+
+visible: true
+deployed: true
